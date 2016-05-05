@@ -67,10 +67,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     keyboard_report->mods == (MOD_BIT(KC_LCTL) | MOD_BIT(KC_RCTL)) || \
     keyboard_report->mods == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) \
 )
-#define ws2812_PORTREG  PORTE
-#define ws2812_DDRREG   DDRE
-#define ws2812_pin PE2
-#define RGBLED_NUM 14     // Number of LEDs
+#define ws2812_PORTREG  PORTD
+#define ws2812_DDRREG   DDRD
+#define ws2812_pin PD5
+#define RGBLED_NUM 19   // Number of LEDs
 #define RGBLIGHT_HUE_STEP 10
 #define RGBLIGHT_SAT_STEP 17
 #define RGBLIGHT_VAL_STEP 17

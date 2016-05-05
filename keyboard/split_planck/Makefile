@@ -50,12 +50,16 @@ TMK_DIR = ../../tmk_core
 TARGET_DIR = .
 
 # # project specific files
-SRC = split_planck.c \
-	  i2c-master.c \
-	  i2c-slave.c \
-	  serial.c \
-	  c44-util.c \
-	  main.c 
+SRC = keymap.c \
+	keymap_common.c \
+	matrix.c \
+	i2c-master.c \
+	i2c-slave.c \
+	serial.c \
+	c44-util.c \
+	main.c \
+	led.c
+	   
 	  
 
 ifdef KEYMAP

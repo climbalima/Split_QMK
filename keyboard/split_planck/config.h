@@ -46,7 +46,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ROWS (int []){ F6, B3, B2, B6 }
 #define ws2812_PORTREG  PORTD
 #define ws2812_DDRREG   DDRD
-#define ws2812_pin PD1
+#define ws2812_pin PD2
 #define RGBLED_NUM  12   // Number of LEDs
 #define RGBLIGHT_HUE_STEP 10
 #define RGBLIGHT_SAT_STEP 17
