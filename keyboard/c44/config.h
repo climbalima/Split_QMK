@@ -24,11 +24,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT_ID      0x4444
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    Max
-#define PRODUCT         Split_Planck
+#define PRODUCT         RGB Split Planck
 #define DESCRIPTION     t.m.k. keyboard firmware for TODO
 
 /* key matrix size */
-#define MATRIX_ROWS 10
+#define MATRIX_ROWS 8
 #define MATRIX_COLS 6
 
 /* define if matrix has ghost */
@@ -71,7 +71,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* disable print */
 //#define NO_PRINT
-
+#define ws2812_PORTREG  PORTD
+#define ws2812_DDRREG   DDRD
+#define ws2812_pin PD2
+#define RGBLED_NUM 12   // Number of LEDs
+#ifndef RGBLIGHT_HUE_STEP
+#define RGBLIGHT_HUE_STEP 10
+#endif
+#ifndef RGBLIGHT_SAT_STEP
+#define RGBLIGHT_SAT_STEP 17
+#endif
+#ifndef RGBLIGHT_VAL_STEP
+#define RGBLIGHT_VAL_STEP 17
+#endif
 /* disable action features */
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
@@ -91,13 +103,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #   define PS2_DATA_BIT    2
 #endif
 
-#define ws2812_PORTREG  PORTD
-#define ws2812_DDRREG   DDRD
-#define ws2812_pin PD2
-#define RGBLED_NUM 14     // Number of LEDs
-#define RGBLIGHT_HUE_STEP 10
-#define RGBLIGHT_SAT_STEP 17
-#define RGBLIGHT_VAL_STEP 17
+
 /* PS/2 mouse interrupt version */
 #ifdef PS2_USE_INT
 /* uses INT1 for clock line(ATMega32U4) */

@@ -42,7 +42,9 @@ int main(void)
 #ifdef SLEEP_LED_ENABLE
     sleep_led_init();
 #endif
-
+#ifdef RGBLIGHT_ENABLE
+        rgblight_init();
+#endif
     while (1) {
         keyboard_task();
 

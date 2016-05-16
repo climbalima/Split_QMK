@@ -23,7 +23,7 @@ void serial_delay(void) {
 
 inline static
 void serial_output(void) {
-  SERIAL_PIN_DDR |= SERIAL_PIN_MASK;
+  SERIAL_PIN_DDR1 |= SERIAL_PIN_MASK1;
 }
 
 // make the serial pin an input with pull-up resistor
@@ -40,12 +40,12 @@ uint8_t serial_read_pin(void) {
 
 inline static
 void serial_low(void) {
-  SERIAL_PIN_PORT &= ~SERIAL_PIN_MASK;
+  SERIAL_PIN_PORT1 &= ~SERIAL_PIN_MASK1;
 }
 
 inline static
 void serial_high(void) {
-  SERIAL_PIN_PORT |= SERIAL_PIN_MASK;
+  SERIAL_PIN_PORT1 |= SERIAL_PIN_MASK1;
 }
 
 void serial_master_init(void) {

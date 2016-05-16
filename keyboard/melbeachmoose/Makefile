@@ -61,8 +61,8 @@ endif
 CONFIG_H = config.h
 
 # MCU name
-#MCU = at90usb1287
-MCU = atmega32u4
+MCU = at90usb1287
+#MCU = atmega32u4
 
 # Processor frequency.
 #     This will define a symbol, F_CPU, in all source code files equal to the
@@ -107,7 +107,7 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 #   Atmel DFU loader 4096
 #   LUFA bootloader  4096
 #   USBaspLoader     2048
-OPT_DEFS += -DBOOTLOADER_SIZE=512
+OPT_DEFS += -DBOOTLOADER_SIZE=1024
 
 
 # Build Options

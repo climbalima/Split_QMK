@@ -29,9 +29,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "debug.h"
 #include "util.h"
 #include "matrix.h"
-#include "i2c-master.h"
-#include "serial.h"
-#include "c44-util.h"
+
+
 
 #ifndef DEBOUNCE
 #   define DEBOUNCE 10
@@ -85,11 +84,7 @@ void matrix_init(void)
     unselect_rows();
     init_cols();
 
-#ifdef USE_I2C
-    i2c_master_init();
-#else
-    serial_master_init();
-#endif
+
 
     /* int x = USB_IsInitialized; */
     /* if (x) { */

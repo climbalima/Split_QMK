@@ -39,30 +39,36 @@
 #----------------------------------------------------------------------------
 
 # Target file name (without extension).
-TARGET = c44
+TARGET = split
+
 
 # Directory common source filess exist
+TOP_DIR = ../..
 TMK_DIR = ../../tmk_core
 
 # Directory keyboard dependent files exist
 TARGET_DIR = .
 
-# project specific files
-SRC =	
+# # project specific files
+SRC = split.c\
 	matrix.c \
 	i2c-master.c \
 	i2c-slave.c \
 	serial.c \
-	c44-util.c \
-	main.c \
-	led.c
-	# main.cpp \
+	c44-util.c 
+
+
+ifdef KEYMAP
+    SRC := keymaps/$(KEYMAP).c $(SRC)
+else
+    SRC := keymaps/default.c $(SRC)
+endif
 
 CONFIG_H = config.h
 
 # MCU name
+#MCU = at90usb1287
 MCU = atmega32u4
-
 
 # Processor frequency.
 #     This will define a symbol, F_CPU, in all source code files equal to the
@@ -107,33 +113,34 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 #   Atmel DFU loader 4096
 #   LUFA bootloader  4096
 #   USBaspLoader     2048
-OPT_DEFS += -DBOOTLOADER_SIZE=4096
+OPT_DEFS += -DBOOTLOADER_SIZE=512
 
 
 # Build Options
 #   comment out to disable the options.
 #
-#BOOTMAGIC_ENABLE = yes	# Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE = yes	# Mouse keys(+4700)
-EXTRAKEY_ENABLE = yes	# Audio control and System control(+450)
-#CONSOLE_ENABLE = yes	# Console for debug(+400)
-#COMMAND_ENABLE = yes    # Commands for debug and configuration
-#SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
-#NKRO_ENABLE = yes	# USB Nkey Rollover - not yet supported in LUFA
-#RGBLIGHT_ENABLE = yes # Enable WS2812 bottom RGB light
-BLUETOOTH_ENABLE = yes
+BOOTMAGIC_ENABLE = yes		# Virtual DIP switch configuration(+1000)
+MOUSEKEY_ENABLE = yes		# Mouse keys(+4700)
+EXTRAKEY_ENABLE = yes		# Audio control and System control(+450)
+CONSOLE_ENABLE = yes		# Console for debug(+400)
+COMMAND_ENABLE = yes		# Commands for debug and configuration
+KEYBOARD_LOCK_ENABLE = yes	# Allow locking of keyboard via magic key
+# Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
+# SLEEP_LED_ENABLE = yes	# Breathing sleep LED during USB suspend
+#NKRO_ENABLE = yes			# USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+# BACKLIGHT_ENABLE = yes	# Enable keyboard backlight functionality
+# MIDI_ENABLE = YES			# MIDI controls
+# UNICODE_ENABLE = YES		# Unicode
+ BLUETOOTH_ENABLE = yes	# Enable Bluetooth with the Adafruit EZ-Key HID
+CUSTOM_MATRIX = yes
 
-
-#PS2_MOUSE_ENABLE = yes  # PS/2 mouse(TrackPoint) support
-#PS2_USE_BUSYWAIT = yes # uses primitive reference code
-#PS2_USE_INT = yes      # uses external interrupt for falling edge of PS/2 clock pin
-#PS2_USE_USART = yes     # uses hardware USART engine for PS/2 signal receive(recomened)
-
+# Optimize size but this may cause error "relocation truncated to fit"
+#EXTRALDFLAGS = -Wl,--relax
 
 # Search Path
 VPATH += $(TARGET_DIR)
 VPATH += $(TOP_DIR)
 VPATH += $(TMK_DIR)
 
-
 include $(TOP_DIR)/quantum/quantum.mk
+

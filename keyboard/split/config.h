@@ -25,12 +25,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT_ID      0x6060
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    You
-#define PRODUCT         melbeachmoose
+#define PRODUCT         split
 #define DESCRIPTION     A custom keyboard
 
 /* key matrix size */
-#define MATRIX_ROWS 6
-#define MATRIX_COLS 19
+#define MATRIX_ROWS 8
+#define MATRIX_COLS 6
 
 /*
  * Keyboard Matrix Assignments
@@ -42,8 +42,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
 */ 
-#define COLS (int []){ C3, F7, C2, F5, F6, F4, F3, F2, F1, F0, E6, E7, B0, B1, B2, B7, D7, C0, C1 }
-#define ROWS (int []){ D3, D4, D5, C7, C6, C5 }
+#define COLS (int []){ F1, F0, B0 }
+#define ROWS (int []){ D0, D5 }
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW

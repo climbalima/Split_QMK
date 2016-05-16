@@ -26,15 +26,17 @@ void matrix_init_kb(void) {
     // unused pins - C7, D4, D5, D7, E6
     // set as input with internal pull-ip enabled
     DDRC  &= ~(1<<7);
-    DDRD  &= ~(1<<7 | 1<<5 | 1<<4);
+    DDRD  &= ~(1<<7 | 1<<4);
     DDRE  &= ~(1<<6);
     PORTC |=  (1<<7);
-    PORTD |=  (1<<7 | 1<<5 | 1<<4);
+    PORTD |=  (1<<7 | 1<<4);
     PORTE |=  (1<<6);
 
     ergodox_blink_all_leds();
 
     matrix_init_user();
+
+    rgblight_init(); 
 }
 
 void matrix_scan_kb(void) {
