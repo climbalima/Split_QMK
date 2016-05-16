@@ -1,6 +1,5 @@
 #include "split.h"
 #include "c44-util.h"
-#include "matrix.c"
 #include "lufa.h"
 
 
@@ -62,7 +61,7 @@ int main(void)
     /* wait for USB startup to get ready for debug output */
     uint8_t timeout = 200;  // timeout when USB is not available
     while (timeout-- && USB_DeviceState != DEVICE_STATE_Configured) {
-        wait_ms(5);
+         _delay_us(5);
 #if defined(INTERRUPT_CONTROL_ENDPOINT)
         ;
 #else
